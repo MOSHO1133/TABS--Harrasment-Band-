@@ -1,3 +1,10 @@
+/*
+ * TABS – Tragedy Assistance Band System
+ *
+ * Licensed under the MIT License.
+ * See LICENSE file for details.
+ */
+
 #include <TinyGPS++.h>
 #include <HardwareSerial.h>
 
