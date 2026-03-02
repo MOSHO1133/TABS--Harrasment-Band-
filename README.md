@@ -1,24 +1,24 @@
 TABS – Tragedy Assistance Band System
 
-TABS (Tragedy Assistance Band System) is a GSM + GPS–based emergency response system designed to send real-time location alerts via SMS when triggered by an authorized message. The system is intended for personal safety applications, particularly for harassment or emergency scenarios, where fast and reliable location sharing is critical.
+TABS (Tragedy Assistance Band System) is a GSM + GPS–based emergency response system designed to transmit real-time location alerts via SMS when triggered by an authorized command. The system is built for personal safety and emergency scenarios, where rapid and reliable location sharing can be critical.
 
-This project integrates a SIM800L GSM module, a GPS receiver, and a microcontroller to automatically respond with live GPS coordinates formatted as a Google Maps link.
+TABS integrates a SIM800L GSM module, a GPS receiver, and a microcontroller to automatically respond with live GPS coordinates formatted as a Google Maps link, ensuring easy and universal access to location data.
 
 🚀 Features
 
 📡 Real-time GPS tracking using TinyGPS++
 
-📱 SMS-based command and response system
+📱 SMS-based command and response mechanism
 
 🌍 Automatic Google Maps location sharing
 
-🔁 Periodic location updates (every 5 minutes)
+🔁 Periodic location updates (default: every 5 minutes)
 
-🔐 Authorized number filtering for secure responses
+🔐 Authorized number filtering for secure operation
 
-🧪 Serial debugging support
+🧪 Serial debugging and monitoring support
 
-⚙️ Modular and extensible code structure
+⚙️ Modular and extensible code architecture
 
 🛠️ Hardware Requirements
 
@@ -28,11 +28,11 @@ SIM800L GSM module
 
 GPS module (NEO-6M or equivalent)
 
-SIM card with SMS support
+SIM card with SMS capability
 
-External power supply (recommended for SIM800L stability)
+External power supply (recommended for SIM800L current stability)
 
-Antennas for GSM and GPS
+GSM and GPS antennas
 
 📚 Software Requirements
 
@@ -49,41 +49,41 @@ Module	TX Pin	RX Pin
 SIM800L	GPIO 4	GPIO 2
 GPS	GPIO 16	GPIO 17
 
-⚠️ Pins can be modified in the code to match your hardware layout.
+⚠️ Pin assignments can be modified in the source code to match your hardware configuration.
 
-⚙️ How It Works
+⚙️ System Workflow
 
-The system initializes the SIM800L and configures it for SMS text mode.
+The system initializes the SIM800L module and configures it for SMS text mode.
 
 The GPS module continuously feeds location data to the TinyGPS++ parser.
 
-When an SMS containing the predefined keyword (Hello) is received from the authorized number, the system:
+When an SMS containing the predefined trigger keyword is received from an authorized number, the system:
 
-Validates GPS availability
+Verifies GPS data availability
 
-Sends back a Google Maps location link
+Sends back a Google Maps link containing the current coordinates
 
-The system also sends location updates automatically every 5 minutes when valid GPS data is available.
+If GPS data remains valid, the system automatically sends location updates at fixed intervals.
 
 📩 SMS Command Logic
 
-Trigger Message:
+Trigger Message
 
 Hello
 
-Authorized Number:
+Authorized Number
 
-+92############
++92XXXXXXXXXX
 
-Only messages matching both the content and sender number will trigger a response.
+Only SMS messages that match both the trigger keyword and the authorized sender number will receive a response.
 
 🌍 Location Message Format
 
-The response SMS contains a Google Maps link:
+The response SMS contains a Google Maps URL:
 
 http://maps.google.com/maps?q=<latitude>,<longitude>
 
-This link opens directly in Google Maps on any smartphone.
+Opening the link displays the exact location directly in Google Maps.
 
 🧪 Debugging & Testing
 
@@ -91,33 +91,33 @@ Open Serial Monitor at 9600 baud
 
 Monitor:
 
-SIM800L responses
+SIM800L AT command responses
 
-GPS fix status
+GPS fix and signal status
 
 SMS send/receive logs
 
-Manual AT commands can be sent through the Serial Monitor.
+Manual AT commands can also be sent through the Serial Monitor for testing.
 
 ⏱️ Location Update Interval
 
-The system automatically sends the GPS location every 5 minutes:
+Location updates are sent every 5 minutes by default:
 
 #define LOCATION_SEND_INTERVAL 300000
 
-You can modify this value as needed.
+This value can be adjusted according to application requirements.
 
 🔒 Safety & Reliability Notes
 
-Ensure stable power delivery to SIM800L (current spikes can reset it).
+Ensure stable power delivery to the SIM800L module (it draws high peak current).
 
-Use antennas for reliable GSM/GPS performance.
+Use appropriate antennas for reliable GSM and GPS communication.
 
-GPS requires clear sky view for accurate location fixes.
+GPS performance requires a clear view of the sky for accurate location fixes.
 
-📈 Future Improvements (Planned)
+📈 Planned Enhancements
 
-Panic button / wearable trigger
+Physical panic button / wearable trigger
 
 AI-based anxiety or distress detection
 
@@ -125,16 +125,17 @@ Encrypted SMS communication
 
 Mobile application integration
 
-Cloud backend for tracking history
+Cloud backend for location history and analytics
 
-Miniaturized PCB design for wearable form factor
+Miniaturized PCB design for wearable deployment
 
 👨‍💻 Author
 
-Syed Muhammad Khizer Haider
-BSCS – Batch 23 (NBC)
+Muhammad Shees
+BSCS Student
+Project: TABS – Tragedy Assistance Band System
 
 📄 License
 
-This project is provided for educational and research purposes.
-Commercial use requires proper testing, certification, and compliance with local regulations.
+This project is licensed under the MIT License.
+See the LICENSE file for full license details.
